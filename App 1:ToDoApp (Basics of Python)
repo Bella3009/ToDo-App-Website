@@ -1,14 +1,30 @@
 todo_list=[]
 
-task = int(input("How many tasks you want to add: "))
-
-n = 1
-
-print("Write what to add in your 'To Do List':")
-
-while n <= task:
-    input_task=input() 
-    todo_list.append(input_task)
-    n = n+1
+while True:
+     user_action = input("Type 'add', 'show' or 'exit': ").lower()
+     user_action = user_action.strip()
+     
+     if user_action == "add":
+         task = int(input("How many tasks you want to add: "))
+         n = 1
+         print("Write what to add in your 'To Do List':")
     
-print(todo_list)
+         while n <= task:
+           input_task=input() 
+           todo_list.append(input_task)
+           n = n+1
+           
+         print("Items added succesfully")
+         
+     elif user_action == "show":
+         for tasks in todo_list:
+             tasks = tasks.title()
+             print(tasks)
+            
+     elif user_action == "exit":
+          break
+     
+     else:
+         print("Input not valid. Try again")
+         
+print("Thank you for using and bye")
