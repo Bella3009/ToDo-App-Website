@@ -1,5 +1,14 @@
-todo_list=[] 
- print("Write what to add in your 'To Do List':") 
- task=input()  
- todo_list.append(task) 
- print(todo_list)
+todo_list=[]
+
+task = int(input("How many tasks you want to add: "))
+
+n = 1
+
+print("Write what to add in your 'To Do List':")
+
+while n <= task:
+    input_task=input() 
+    todo_list.append(input_task)
+    n = n+1
+    
+print(todo_list)
