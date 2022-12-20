@@ -1,0 +1,5 @@
+todo_list=[] 
+ print("Write what to add in your 'To Do List':") 
+ task=input()  
+ todo_list.append(task) 
+ print(todo_list)
