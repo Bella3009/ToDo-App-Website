@@ -1,7 +1,7 @@
 todo_list=[]
 
 while True:
-     user_action = input("Type 'add', 'show' or 'exit': ").lower()
+     user_action = input("Type 'add', 'show', 'edit' or 'exit': ").lower()
      user_action = user_action.strip()
      
      if user_action == "add":
@@ -15,12 +15,20 @@ while True:
            n = n+1
            
          print("Items added succesfully")
-         
+        
      elif user_action == "show":
+         n = 0
          for tasks in todo_list:
+             n = n+1
              tasks = tasks.title()
-             print(tasks)
+             print(n,". ",tasks)
             
+     elif user_action == "edit":
+         task_list = int(input("Type the number of the task you want to edit: "))
+         task_list = task_list - 1
+         
+         todo_list[task_list] = input("You want to edit the task to: ")
+         
      elif user_action == "exit":
           break
      
