@@ -10,23 +10,23 @@ while True:
          while n <= task:
            input_task= input() + '\n'
            
-           file = open('Tasks.txt', 'r')
-           todo_list = file.readlines()
-           file.close()
+           with open("Tasks.txt", "r") as file:
+               todo_list = file.readlines()
+               # with the with is not needed file.close() because it close automatically
            
            todo_list.append(input_task)
-           file =open('Tasks.txt', 'w')
-           file.writelines(todo_list)
-           file.close()
+           
+           with open("Tasks.txt", "w") as file:
+               todo_list = file.writelines(todo_list)
+ 
            n = n+1
            
          print("Items added succesfully")
         
      elif user_action == "show":
-         file = open('Tasks.txt','r')
-         todo_list = file.readlines()
-         file.close()
-             
+         with open("Tasks.txt", "r") as file:
+               todo_list = file.readlines()
+          
          new_todo = [task.strip("\n") for task in todo_list]
          
          for index, tasks in enumerate(new_todo):
@@ -39,22 +39,20 @@ while True:
          
          todo_list[task_list] = input("You want to edit the task to: ") + "\n"
          
-         print("Item addes successfully")
+         print("Item edited successfully")
          
-         file =open('Tasks.txt', 'w')
-         file.writelines(todo_list)
-         file.close()
+         with open("Tasks.txt", "w") as file:
+               todo_list = file.writelines(todo_list)
      
      elif user_action == "complete":
          task_list = int(input("Type the number of the task you want to mark as complete: "))
          task_list = task_list - 1
          
          todo_list.pop(task_list)
-         print("Item completes removed succesfully")
+         print("Item completed removed succesfully")
          
-         file =open('Tasks.txt', 'w')
-         file.writelines(todo_list)
-         file.close()
+         with open("Tasks.txt", "w") as file:
+               todo_list = file.writelines(todo_list)
              
      elif user_action == "exit":
           break
