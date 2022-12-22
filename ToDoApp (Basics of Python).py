@@ -1,7 +1,12 @@
+import time
 import ToDo_Macro
 import Error_Handling
-    
+
+now = time.strftime("%d/%b/%Y  %T")
+print(f"The date is {now}")
+     
 while True:
+     
      user_action = input("Type 'add', 'show', 'edit', 'complete' or 'exit': ").lower()
      user_action = user_action.strip()
      
