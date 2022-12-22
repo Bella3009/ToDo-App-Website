@@ -1,5 +1,3 @@
-todo_list=[]
-
 while True:
      user_action = input("Type 'add', 'show', 'edit', 'complete' or 'exit': ").lower()
      user_action = user_action.strip()
@@ -10,13 +8,24 @@ while True:
          print("Write what to add in your 'To Do List':")
     
          while n <= task:
-           input_task=input() 
+           input_task= input() + '\n'
+           
+           file = open('Tasks.txt', 'r')
+           todo_list = file.readlines()
+           file.close()
+           
            todo_list.append(input_task)
+           file =open('Tasks.txt', 'w')
+           file.writelines(todo_list)
+           file.close()
            n = n+1
            
          print("Items added succesfully")
         
      elif user_action == "show":
+         file = open('Tasks.txt','r')
+         todo_list = file.readlines()
+         file.close()
          for index, tasks in enumerate(todo_list):
              tasks = tasks.title()
              print(f"{index+1}. {tasks}")
