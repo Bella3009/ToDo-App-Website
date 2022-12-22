@@ -26,22 +26,35 @@ while True:
          file = open('Tasks.txt','r')
          todo_list = file.readlines()
          file.close()
-         for index, tasks in enumerate(todo_list):
-             tasks = tasks.title()
+             
+         new_todo = [task.strip("\n") for task in todo_list]
+         
+         for index, tasks in enumerate(new_todo):
+             tasks = tasks.title() #tasks = tasks.strip("\n") and remove liner 37
              print(f"{index+1}. {tasks}")
             
      elif user_action == "edit":
          task_list = int(input("Type the number of the task you want to edit: "))
          task_list = task_list - 1
          
-         todo_list[task_list] = input("You want to edit the task to: ")
+         todo_list[task_list] = input("You want to edit the task to: ") + "\n"
+         
+         print("Item addes successfully")
+         
+         file =open('Tasks.txt', 'w')
+         file.writelines(todo_list)
+         file.close()
      
      elif user_action == "complete":
-         task_list = int(input("Type the number of the task you want to complete: "))
+         task_list = int(input("Type the number of the task you want to mark as complete: "))
          task_list = task_list - 1
          
          todo_list.pop(task_list)
-         print("Item removed succesfully")
+         print("Item completes removed succesfully")
+         
+         file =open('Tasks.txt', 'w')
+         file.writelines(todo_list)
+         file.close()
              
      elif user_action == "exit":
           break
