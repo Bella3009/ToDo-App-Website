@@ -5,19 +5,22 @@ psg.theme("DarkBlue4")
 
 clean_list = [clean.strip("\n") for clean in tdm.get_todos()]
 
-label = psg.Text("Type a task to be added:", (50,1))
+label = psg.Text("Type a task to be added:")
 empty = psg.Text("")
-input_add = psg.InputText(tooltip="Type a task", key="task_todo", size=(25,1))
+input_add = psg.InputText(tooltip="Type a task", key="task_todo")
 add_button = psg.Button("Add")
 edit_button = psg.Button("Edit")
-task_list = psg.Listbox(values=clean_list, key="todo", enable_events=True, size=[50,20])
+task_list = psg.Listbox(values=clean_list, key="todo", size =[75,25], enable_events=True)
 complete_button = psg.Button("Complete")
 exit_button = psg.Button("Exit")
 
 col1 = [[task_list]]
 col2 = [[empty], [edit_button],[complete_button]]
  
-window = psg.Window("My To Do App", layout = [[label], [input_add, add_button], [psg.Column(col1, size=(700,1350)), psg.Column(col2, element_justification="c")], [exit_button]], size =[1000,1650], element_justification="c")
+window = psg.Window("My To Do App", layout = [[label], [input_add, add_button],
+                                              [psg.Column(col1),
+                                               psg.Column(col2, element_justification="c")],
+                                              [exit_button]], element_justification="c")
 
 while True:
     event, value = window.read()
