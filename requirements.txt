@@ -1,0 +1,10 @@
+pip
+attrs
+pathlib
+Pillow
+tornado
+Jinja2
+setuptools
+packaging
+zipp
+streamlit
